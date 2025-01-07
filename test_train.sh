@@ -29,10 +29,7 @@ accelerate launch train_dreambooth_lora_sdxl.py \
     --learning_rate=1e-4 \
     --lr_scheduler="constant" \
     --lr_warmup_steps=0 \
-    --max_train_steps=1 \
-    --enable_xformers_memory_efficient_attention \
-    --gradient_checkpointing \
-    --use_8bit_adam \
+    --max_train_steps=500 \
     --mixed_precision="fp16" \
     # --validation_prompt="shshshss, 1girl, a photo of upper body" \
     # --validation_epochs=25 \
