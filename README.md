@@ -60,9 +60,15 @@ python inference.py --class_name="[name]" --gender="[gender]" --output="[output_
 ## Example Results
 ### Input Images
 The model was trained on a set of reference images (4~6 images used as example):
-
+![image](https://github.com/user-attachments/assets/5c435540-1511-4879-9189-ca3bfa04b20f)
+![image](https://github.com/user-attachments/assets/51832752-d2b3-4dcf-9c95-8e4c38215062)
+![image](https://github.com/user-attachments/assets/51023442-e02c-4ca0-bc2a-a31310a584f9)
+![image](https://github.com/user-attachments/assets/3d8fd7b5-8260-4d16-aa3c-e85539703341)
 
 ###  Output Results
+![image](https://github.com/user-attachments/assets/1206a327-da80-49d8-b967-a664465ddd91)
+![image](https://github.com/user-attachments/assets/daf30095-f7f5-480f-b8f7-8abd3faa3ab4)
+![image](https://github.com/user-attachments/assets/3204bfe5-864d-4f5f-a6a1-df275fad2eb9)
 
 
 ## Troubleshooting
