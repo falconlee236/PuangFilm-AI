@@ -37,8 +37,12 @@ negative_prompt = "ugly, deformed, noisy, blurry, distorted, grainy, text, cropp
 generator = torch.Generator("cuda").manual_seed(43)
 
 # Run inference.
+print("run inference")
 image = pipe(prompt=prompt, negative_prompt=negative_prompt, generator=generator, num_inference_steps=40)
 image = image.images[0]
+print("---")
+print(torch.cuda.empty_cache())
+print("---")
 image = refiner(prompt=prompt, negative_prompt=negative_prompt, generator=generator, image=image)
 image = image.images[0]
 
