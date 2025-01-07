@@ -25,7 +25,7 @@ accelerate launch train_dreambooth_lora_sdxl.py \
     --resolution=720 \
     --train_batch_size=1 \
     --gradient_accumulation_steps=4 \
-    --learning_rate=1e-4 \
+    --learning_rate=2e-4 \
     --lr_scheduler="constant" \
     --lr_warmup_steps=0 \
     --max_train_steps=500 \
