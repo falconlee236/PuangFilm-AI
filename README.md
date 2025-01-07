@@ -1,36 +1,34 @@
 # PuangFilm-AI
 A custom AI image generation project based on SDXL (Stable Diffusion XL) with LoRA training for personalized image creation. This project specializes in generating high-quality personalized portraits using fine-tuned AI models.
-Features
 
-# Custom LoRA model training based on SDXL
-Personalized image generation through prompts
-Inference support using trained models
-High-performance training with GPU acceleration
-Automated model optimization
-Memory-optimized inference process
+## Features
+* Custom LoRA model training based on SDXL
+* Personalized image generation through prompts
+* Inference support using trained models
+* High-performance training with GPU acceleration
+* Automated model optimization
+* Memory-optimized inference process
 
-# Tech Stack
+## Tech Stack
+* Python 3.x
+* Hugging Face Diffusers
+* PyTorch with CUDA support
+* Accelerate
+* PEFT (Parameter-Efficient Fine-Tuning)
+* SDXL Base 1.0
 
-Python 3.x
-Hugging Face Diffusers
-PyTorch with CUDA support
-Accelerate
-PEFT (Parameter-Efficient Fine-Tuning)
-SDXL Base 1.0
-
-# Installation
-
-Clone the repository
+## Installation
+1. Clone the repository
 ```bash
 git clone https://github.com/falconlee236/PuangFilm-AI.git
 cd PuangFilm-AI
 ```
-## Setup environment
+2. Setup environment
 ```bash
 bashCopychmod +x setup.sh
 ./setup.sh
 ```
-## Install required packages
+3. Install required packages
 ```bash
 conda env create -f environment.yaml
 ```
@@ -41,15 +39,12 @@ Place your training images in the saved_images directory and run:
 ```bash
 ./train.sh
 ```
-
-
-Training parameters:
-
-Resolution: 720px
-Training steps: 500
-Batch size: 1
-Learning rate: 2e-4
-Gradient accumulation steps: 4
+### Training parameters:
+* Resolution: 720px
+* Training steps: 500
+* Batch size: 1
+* Learning rate: 2e-4
+* Gradient accumulation steps: 4
 
 2. Generating Images
 To generate images using the trained model:
@@ -85,33 +80,32 @@ Implemented memory optimization techniques from Hugging Face Diffusers Memory Gu
 Successfully reduced memory usage
 Now able to generate multiple images (achieved max usage of 12949 MB)
 
-Memory Usage Stats (Tesla T4):
-
-Total GPU Memory: 15360 MiB
-Peak Memory Usage: ~12949 MiB
-Optimal Memory State: 7049 MiB (idle state)
+__Memory Usage Stats (Tesla T4):__
+* Total GPU Memory: 15360 MiB
+* Peak Memory Usage: ~12949 MiB
+* Optimal Memory State: 7049 MiB (idle state)
 
 ## Best Practices
 
 ### Input Images:
 
-Recommended number: 4-5 training images
-Keep consistent image quality and style
-Use high-resolution source images
+* Recommended number: 4-5 training images
+* Keep consistent image quality and style
+* Use high-resolution source images
 
 
 ### Generation Settings:
 
-Batch size: 1 (for memory efficiency)
-Resolution: 720p (balanced quality and memory usage)
-Steps: 40 (default for inference)
+* Batch size: 1 (for memory efficiency)
+* Resolution: 720p (balanced quality and memory usage)
+* Steps: 40 (default for inference)
 
 
 ### System Requirements:
 
-Minimum: Tesla T4 or equivalent
-RAM: 16GB or higher
-CUDA Version: 12.4 compatible
+* Minimum: Tesla T4 or equivalent
+* RAM: 16GB or higher
+* CUDA Version: 12.4 compatible
 
 
 
@@ -151,7 +145,7 @@ The project uses:
 * Constant learning rate scheduler
 * Custom VAE path: "madebyollin/sdxl-vae-fp16-fix"
 
-# License
+### License
 This project is distributed under the terms specified in the LICENSE file.
 
 For issues and feature requests, please use the GitHub issue tracker
