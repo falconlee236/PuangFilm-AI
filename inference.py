@@ -36,17 +36,20 @@ prompt = f"A picture of a {args.class_name}, 1 {args.gender}, upper body, high q
 negative_prompt = "ugly, deformed, noisy, blurry, distorted, grainy, text, cropped, EasyNegative"
 generator = torch.Generator("cuda").manual_seed(43)
 
+# inference Memory optimize
+pipe.enable_vae_slicing()
+pipe.enable_vae_tiling()
+pipe.enable_sequential_cpu_offload()
+pipe.enable_xformers_memory_efficient_attention()
+pipe.enable_model_cpu_offload()
+
+refiner.enable_vae_slicing()
+refiner.enable_vae_tiling()
+refiner.enable_sequential_cpu_offload()
+refiner.enable_xformers_memory_efficient_attention()
+refiner.enable_model_cpu_offload()
+
 # Run inference.
-#pipe.enable_vae_slicing()
-#pipe.enable_vae_tiling()
-#pipe.enable_sequential_cpu_offload()
-#pipe.enable_xformers_memory_efficient_attention()
-#pipe.enable_model_cpu_offload()
-#refiner.enable_vae_slicing()
-#refiner.enable_vae_tiling()
-#refiner.enable_sequential_cpu_offload()
-#refiner.enable_xformers_memory_efficient_attention()
-#refiner.enable_model_cpu_offload()
 print("run inference")
 image = pipe(prompt=prompt, negative_prompt=negative_prompt, generator=generator, num_inference_steps=40)
 image = image.images[0]
