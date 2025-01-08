@@ -17,12 +17,26 @@ pipe = DiffusionPipeline.from_pretrained(
     model,
     torch_dtype=torch.float16,
 )
+# inference Memory optimize
+pipe.enable_vae_slicing()
+pipe.enable_vae_tiling()
+pipe.enable_sequential_cpu_offload()
+pipe.enable_xformers_memory_efficient_attention()
+pipe.enable_model_cpu_offload()
 pipe.to("cuda")
 pipe.load_lora_weights("lora-trained-xl/pytorch_lora_weights.safetensors")
+
+
 refiner = StableDiffusionXLImg2ImgPipeline.from_pretrained(
     "stabilityai/stable-diffusion-xl-refiner-1.0",
     torch_dtype=torch.float16,
 )
+# inference Memory optimize
+refiner.enable_vae_slicing()
+refiner.enable_vae_tiling()
+refiner.enable_sequential_cpu_offload()
+refiner.enable_xformers_memory_efficient_attention()
+refiner.enable_model_cpu_offload()
 refiner.to("cuda")
 
 print("-----")
@@ -35,19 +49,6 @@ print('Current cuda device ', torch.cuda.current_device()) # check
 prompt = f"A picture of a {args.class_name}, 1 {args.gender}, upper body, high quality, highly detailed eyes, photo realistic, 8k, profile, natural, vivid, cute, without accessories"
 negative_prompt = "ugly, deformed, noisy, blurry, distorted, grainy, text, cropped, EasyNegative"
 generator = torch.Generator("cuda").manual_seed(43)
-
-# inference Memory optimize
-pipe.enable_vae_slicing()
-pipe.enable_vae_tiling()
-pipe.enable_sequential_cpu_offload()
-pipe.enable_xformers_memory_efficient_attention()
-pipe.enable_model_cpu_offload()
-
-refiner.enable_vae_slicing()
-refiner.enable_vae_tiling()
-refiner.enable_sequential_cpu_offload()
-refiner.enable_xformers_memory_efficient_attention()
-refiner.enable_model_cpu_offload()
 
 # Run inference.
 print("run inference")
